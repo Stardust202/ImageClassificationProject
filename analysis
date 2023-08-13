@@ -1,0 +1,31 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the Iris dataset
+url = "https://raw.githubusercontent.com/uiuc-cse/data-fa14/gh-pages/data/iris.csv"
+iris_data = pd.read_csv(url)
+
+# Display basic information about the dataset
+print(iris_data.info())
+
+# Display the first few rows of the dataset
+print(iris_data.head())
+
+# Summary statistics
+print(iris_data.describe())
+
+# Species distribution
+species_counts = iris_data['species'].value_counts()
+print(species_counts)
+
+# Pair plot
+sns.pairplot(iris_data, hue='species')
+plt.title("Pair Plot of Iris Dataset")
+plt.show()
+
+# Box plot
+plt.figure(figsize=(10, 6))
+sns.boxplot(x='species', y='sepal_length', data=iris_data)
+plt.title("Sepal Length by Species")
+plt.show()
